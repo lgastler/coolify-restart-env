@@ -46,4 +46,7 @@ async function fsExists(path) {
   // save the file
   const dataToSave = JSON.stringify(dataObj, null, 2);
   await fs.writeFile(dataPath, dataToSave, "utf8");
+
+  // do not exit the process
+  process.stdin.resume();
 })();
