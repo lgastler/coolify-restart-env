@@ -2,6 +2,7 @@
 
 const fs = require("fs/promises");
 const path = require("path");
+const http = require("http");
 
 const formatter = Intl.DateTimeFormat("en-US", {
   year: "numeric",
@@ -47,6 +48,13 @@ async function fsExists(path) {
   const dataToSave = JSON.stringify(dataObj, null, 2);
   await fs.writeFile(dataPath, dataToSave, "utf8");
 
-  // do not exit the process
-  process.stdin.resume();
+  // add server to listen on port 3000
+  const server = http.createServer((req, res) => {
+    res.writeHead(200, { "Content-Type": "application/json" });
+    res.end(dataToSave);
+  });
+
+  server.listen(3000, () => {
+    console.log("Server listening on port 3000");
+  });
 })();
