@@ -1,0 +1,12 @@
+{
+  "name": "coolify-restart-env",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": [],
+  "author": "Lennart Gastler",
+  "license": "MIT"
+}
